@@ -1,0 +1,30 @@
+{
+    "name": "dtopski/cargo-express",
+    "description": "Test task for PHP developers",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Dmitry Zakharov",
+            "email": "d.zakharov@reverse.systems"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "CargoExpress\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "CargoExpress\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.2",
+        "ext-xdebug": "*",
+        "ext-zip": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    }
+}
