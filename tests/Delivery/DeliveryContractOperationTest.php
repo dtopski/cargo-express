@@ -73,7 +73,7 @@ class DeliveryContractOperationTest extends TestCase
             $deliveryRequest = new DeliveryRequest($client2->getId(), $transportModel1->getId(), '2020-01-01 10:00', 'Нью-Йорк');
 
             // Операция заключения договора на доставку
-            $deliveryContractOperation = new DeliveryContactOperation($contractsRepo->reveal(), $clientRepo, $transportModelsRepo);
+            $deliveryContractOperation = new DeliveryContractOperation($contractsRepo->reveal(), $clientRepo, $transportModelsRepo);
         }
 
         // -- Act
@@ -110,7 +110,7 @@ class DeliveryContractOperationTest extends TestCase
             $deliveryRequest = new DeliveryRequest($client1->getId(), $transportModel1->getId(), '2020-01-01 17:30', 'Нью-Йорк');
 
             // Операция заключения договора на доставку
-            $deliveryContractOperation = new DeliveryContactOperation($contractsRepo->reveal(), $clientRepo, $transportModelRepo);
+            $deliveryContractOperation = new DeliveryContractOperation($contractsRepo->reveal(), $clientRepo, $transportModelRepo);
         }
 
         // -- Act

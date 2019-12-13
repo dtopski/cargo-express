@@ -6,7 +6,7 @@ namespace CargoExpress\Delivery;
 use CargoExpress\ClientsRepository;
 use CargoExpress\TransportModelsRepository;
 
-class DeliveryContactOperation
+class DeliveryContractOperation
 {
     /**
      * @var DeliveryContractsRepository
@@ -24,7 +24,7 @@ class DeliveryContactOperation
     protected $transportModelsRepository;
 
     /**
-     * DeliveryContactOperation constructor.
+     * DeliveryContractOperation constructor.
      *
      * @param DeliveryContractsRepository $contractsRepo
      * @param ClientsRepository $clientsRepo
