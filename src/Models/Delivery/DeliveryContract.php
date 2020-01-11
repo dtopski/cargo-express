@@ -1,14 +1,14 @@
 <?php
 declare(strict_types = 1);
 
-namespace CargoExpress\Delivery;
+namespace CargoExpress\Models\Delivery;
 
-use CargoExpress\Client;
-use CargoExpress\TransportModel;
+use CargoExpress\Models\TransportModel;
+use CargoExpress\Models\ClientModel;
 
 class DeliveryContract
 {
-    /** @var Client */
+    /** @var ClientModel */
     protected $client;
 
     /** @var TransportModel */
@@ -24,11 +24,11 @@ class DeliveryContract
 
     /**
      * DeliveryContract constructor.
-     * @param Client $client
+     * @param ClientModel $client
      * @param TransportModel $transportModel
      * @param string $startDate
      */
-    public function __construct(Client $client, TransportModel $transportModel, string $startDate)
+    public function __construct(ClientModel $client, TransportModel $transportModel, string $startDate)
     {
         $this->client         = $client;
         $this->transportModel = $transportModel;
@@ -42,5 +42,16 @@ class DeliveryContract
     public function getPrice(): float
     {
         return $this->price;
+    }
+
+    /**
+     * @param float $price
+     * @return bool
+     */
+    public function setPrice(float $price): bool
+    {
+        $this->price = $price;
+
+        return true;
     }
 }

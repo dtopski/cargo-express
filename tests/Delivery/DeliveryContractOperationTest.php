@@ -3,18 +3,22 @@ declare(strict_types = 1);
 
 namespace CargoExpress\Delivery;
 
+use CargoExpress\Models\Delivery\DeliveryContract;
+use CargoExpress\Models\Delivery\DeliveryRequest;
+use CargoExpress\Operations\DeliveryContractOperation;
+use CargoExpress\Repositories\DeliveryContractsRepository;
+use CargoExpress\Repositories\TransportModelsRepository;
+use CargoExpress\Repositories\ClientsRepository;
+use CargoExpress\Models\TransportModel;
+use CargoExpress\Models\ClientModel;
 use PHPUnit\Framework\TestCase;
-use CargoExpress\Client;
-use CargoExpress\ClientsRepository;
-use CargoExpress\TransportModel;
-use CargoExpress\TransportModelsRepository;
 
 class DeliveryContractOperationTest extends TestCase
 {
     /**
      * Stub репозитория клиентов
      *
-     * @param Client[] ...$clients
+     * @param ClientModel[] ...$clients
      * @return ClientsRepository
      */
     private function makeFakeClientRepository(...$clients): ClientsRepository
@@ -51,8 +55,8 @@ class DeliveryContractOperationTest extends TestCase
         // -- Arrange
         {
             // Клиенты
-            $client1    = new Client(1, 'Джонни');
-            $client2    = new Client(2, 'Роберт');
+            $client1    = new ClientModel(1, 'Джонни');
+            $client2    = new ClientModel(2, 'Роберт');
             $clientRepo = $this->makeFakeClientRepository($client1, $client2);
 
             // Модель транспорта
@@ -61,15 +65,18 @@ class DeliveryContractOperationTest extends TestCase
             $transportModelsRepo = $this->makeFakeTransportModelRepository($transportModel1);
 
             // Контракт доставки. 1й клиент арендовал транпорт 1
+            /** @var DeliveryContract $deliveryContract */
             $deliveryContract = new DeliveryContract($client1, $transportModel1, '2020-01-01 00:00');
 
             // Stub репозитория договоров
+            /** @var DeliveryContractsRepository $contractsRepo */
             $contractsRepo = $this->prophesize(DeliveryContractsRepository::class);
             $contractsRepo
                 ->getForTransportModel($transportModel1->getId(), '2020-01-01 10:00')
                 ->willReturn([ $deliveryContract ]);
 
             // Запрос на новую доставку. 2й клиент выбрал время когда транспорт занят.
+            /** @var DeliveryRequest $deliveryRequest */
             $deliveryRequest = new DeliveryRequest($client2->getId(), $transportModel1->getId(), '2020-01-01 10:00', 'Нью-Йорк');
 
             // Операция заключения договора на доставку
@@ -94,7 +101,7 @@ class DeliveryContractOperationTest extends TestCase
         // -- Arrange
         {
             // Клиент
-            $client1    = new Client(1, 'Джонни');
+            $client1    = new ClientModel(1, 'Джонни');
             $clientRepo = $this->makeFakeClientRepository($client1);
 
             // Модель транспорта

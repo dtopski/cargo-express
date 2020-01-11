@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace CargoExpress;
+namespace CargoExpress\Models;
 
 class TransportModel
 {

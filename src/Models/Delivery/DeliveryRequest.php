@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace CargoExpress\Delivery;
+namespace CargoExpress\Models\Delivery;
 
 class DeliveryRequest
 {

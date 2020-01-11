@@ -1,9 +1,9 @@
 <?php
 declare(strict_types = 1);
 
-namespace CargoExpress;
+namespace CargoExpress\Models;
 
-class Client
+class ClientModel
 {
     /** @var int id клиента */
     protected $id;
@@ -12,7 +12,7 @@ class Client
     protected $name;
 
     /**
-     * Client constructor.
+     * ClientModel constructor.
      *
      * @param int $id
      * @param string $name

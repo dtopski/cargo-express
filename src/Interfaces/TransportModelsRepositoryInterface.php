@@ -1,9 +1,11 @@
 <?php
 declare(strict_types = 1);
 
-namespace CargoExpress;
+namespace CargoExpress\Interfaces;
 
-interface TransportModelsRepository
+use CargoExpress\Models\TransportModel;
+
+interface TransportModelsRepositoryInterface
 {
     /**
      * Возвращает транспорт по его id

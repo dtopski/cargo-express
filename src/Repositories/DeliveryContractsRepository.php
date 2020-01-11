@@ -1,9 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace CargoExpress\Delivery;
+namespace CargoExpress\Repositories;
 
-interface DeliveryContractsRepository
+use CargoExpress\Interfaces\DeliveryContractsRepositoryInterface;
+use CargoExpress\Models\Delivery\DeliveryContract;
+
+class DeliveryContractsRepository implements DeliveryContractsRepositoryInterface
 {
     /**
      * Возвращает список договоров доставки для модели транспорта, в которых она занята в указанный период
@@ -12,5 +15,7 @@ interface DeliveryContractsRepository
      * @param string $date
      * @return DeliveryContract[]
      */
-    public function getForTransportModel(int $transportModelId, string $date): array;
+    public function getForTransportModel(int $transportModelId, string $date): array {
+
+    }
 }
